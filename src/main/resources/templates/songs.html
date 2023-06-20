@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>Best of the Year</title>
+    <title>Best Songs</title>
 </head>
 <body>
-  <h1>Best of the year by <span th:text="${nome}"></span></h1>
-
-
-
+<h2>Best Songs:</h2>
+<ul>
+    <li th:text="${songTitles}"></li>
+</ul>
 </body>
 </html>
