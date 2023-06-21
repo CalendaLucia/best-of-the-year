@@ -28,9 +28,10 @@ public class IndexController {
 
     @GetMapping("/movies")   // dico a Spring che il metodo deve essere chiamato solo quando arriva una richiesta HTTP di tipo GET a un percorso specifico.
     public String getMovies (Model model) {
-        List<Movie> bestMovies = getBestMovies();      // Ottiene la lista dei migliori film
-        model.addAttribute("movieTitles", bestMovies); // Aggiunge la lista movieTitles al model
-        return "movies"; // ritorno il nome del tamplate movies.html
+        List<Movie> bestMovies = getBestMovies();                          // Ottiene la lista dei migliori film
+        model.addAttribute("movieTitles", bestMovies);        // Aggiunge la lista movieTitles al model
+        model.addAttribute("movie", true);       //
+        return "movies";                                                // ritorno il nome del tamplate movies.html
     }
 
 
@@ -53,6 +54,7 @@ public class IndexController {
     public String getSongs(Model model) {
         List<Song> bestSongs = getBestSongs();
         model.addAttribute("songTitles", bestSongs);
+        model.addAttribute("song", true);
         return "songs";// ritorno il nome del tamplate songs.html
     }
 

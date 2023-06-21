@@ -6,11 +6,18 @@
 <body>
 <nav  th:replace="fragments :: navbar"></nav>
     <h2>Best Movies:</h2>
-    <ul>
-        <li th:each="movie : ${movieTitles}">
-            <a th:href="@{|/movies/${movie.id}|}" th:text="${movie.titolo}"></a>
+
+    <ol class="list-group list-group-numbered">
+        <li th:each="movie : ${movieTitles}" class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <a th:href="@{|/movies/${movie.id}|}">
+                    <div class="fw-bold"  th:text="${movie.titolo}"></div>
+                </a>
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
         </li>
-    </ul>
+    </ol>
+
 
     <th:block th:replace="fragments :: return-home"></th:block>
 </body>
