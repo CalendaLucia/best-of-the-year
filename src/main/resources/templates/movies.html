@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-    <title>Best Movies</title>
+    <th:block th:replace="fragments :: head"></th:block>
 </head>
 <body>
+<nav  th:replace="fragments :: navbar"></nav>
     <h2>Best Movies:</h2>
     <ul>
-        <li th:each="movie : ${movieTitles}" th:text="${movie.titolo}"></li>
+        <li th:each="movie : ${movieTitles}">
+            <a th:href="@{|/movies/${movie.id}|}" th:text="${movie.titolo}"></a>
+        </li>
     </ul>
+
+    <th:block th:replace="fragments :: return-home"></th:block>
 </body>
 </html>

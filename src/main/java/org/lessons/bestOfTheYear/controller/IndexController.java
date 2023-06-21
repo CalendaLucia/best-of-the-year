@@ -5,6 +5,7 @@ import org.lessons.bestOfTheYear.models.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +33,47 @@ public class IndexController {
         return "movies"; // ritorno il nome del tamplate movies.html
     }
 
+
+    //METODO CHE PORTA ALLA PAGINA DI DETTAGLIO DEI FILMS
+    @GetMapping("movies/{id}")
+    public String movieDetail(@PathVariable Integer id, Model model) {
+        //recupero l'id del film dal path
+        Movie currentMovie = null;
+        for (Movie movie: getBestMovies()) {
+            if (movie.getId() == id) {
+                currentMovie = movie;
+            }
+        }
+        // aggiungo il nome del film al model
+        model.addAttribute("movie", currentMovie);
+        return "detail";
+    }
+
     @GetMapping("/songs")
     public String getSongs(Model model) {
         List<Song> bestSongs = getBestSongs();
         model.addAttribute("songTitles", bestSongs);
         return "songs";// ritorno il nome del tamplate songs.html
     }
+
+    //METODO CHE PORTA ALLA PAGINA DI DETTAGLIO DELLE SONGS
+    @GetMapping("songs/{id}")
+    public String songDetail(@PathVariable Integer id, Model model) {
+        //recupero l'id delle song dal path
+        Song currentSong = null;
+        for (Song song: getBestSongs()) {
+            if (song.getId() == id) {
+                currentSong = song;
+            }
+        }
+        // aggiungo il nome del film al model
+        model.addAttribute("song", currentSong);
+        return "detail";
+    }
+
+
+
+
 
     // Metodo privato che restituisce una lista di oggetti Movie
     private List<Movie> getBestMovies() {

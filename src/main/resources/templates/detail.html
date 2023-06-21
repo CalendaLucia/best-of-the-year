@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <th:block th:replace="fragments :: head"></th:block>
+</head>
+<body>
+<nav  th:replace="fragments :: navbar"></nav>
+
+<h2 th:if="${movie}" th:text="${movie.titolo}"></h2>
+<h2 th:if="${song}" th:text="${song.titolo}"></h2>
+
+  <ul th:if="${movie}" th:object="${movie}">
+    <li th:text="|Id: *{id}|"></li>
+    <li th:text="|Titolo: *{titolo}|"></li>
+  </ul>
+
+  <ul th:if="${song}" th:object="${song}">
+    <li th:text="|Id: *{id}|"></li>
+    <li th:text="|Titolo: *{titolo}|"></li>
+  </ul>
+
+</body>
+</html>
