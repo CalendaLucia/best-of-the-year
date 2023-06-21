@@ -7,7 +7,7 @@
 <body>
 <h2>Best Songs:</h2>
 <ul>
-    <li th:text="${songTitles}"></li>
+    <li th:each="song : ${songTitles}" th:text="${song.titolo}"></li>
 </ul>
 </body>
 </html>
